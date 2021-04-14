@@ -127,7 +127,12 @@ def get_prob(from_flavor, to_flavor, L_m, E_MeV, U_PMNS, dm2):
     return result.real
 
 def prob_to_all(from_flavor, L_m, E_MeV, U_PMNS, dm2):
-    """Compute the probability to e, mu and tau."""
+    """Compute the probability to e, mu and tau.
+
+    An array or list of lengths can be provided, or a scalar (number)
+    The return value will be a 2D array of shape (3, len(L_m))
+    (or (3, 1) if L_m is a scalar).
+    """
     if nu.is_bar(from_flavor):
         to_flavors = np.array([nu.ebar, nu.mubar, nu.taubar])
     else:
